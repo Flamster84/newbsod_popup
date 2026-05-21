@@ -1,59 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>System Warning - MS Error</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Windows Defender Alert Simulation</title>
+<style>
+  body {
+    margin: 0;
+    background-color: #0078D7;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    flex-direction: column;
+  }
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+  }
+  ul li::before {
+    content: "• ";
+  }
+  p {
+    max-width: 600px;
+    margin: 10px auto;
+  }
+  .cta {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  .layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .text-content {
+    max-width: 500px;
+  }
+  .windows-logo {
+    width: 120px;
+    height: auto;
+  }
+  .esc-cue {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;
+    opacity: 0.6;
+    animation: blink 1s infinite;
+  }
+  @keyframes blink {
+    50% { opacity: 0; }
+  }
+</style>
 </head>
-<body oncontextmenu="return false" onbeforeunload="return 'You will lose data!'">
-
-    <!-- Background Split -->
-    <div class="bg-left"></div>
-    <div class="bg-right"></div>
-
-    <!-- Main Content -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" class="logo" alt="Microsoft">
-
-    <div class="error-code">ERROR # MS-0x8024402C</div>
-
-    <div class="main-text">
-        <p>Your Computer has been locked. Please call Microsoft Support immediately</p>
-        <h1 class="phone-number">+1 (877) 573 9043</h1>
+<body>
+  <div class="layout">
+    <div class="text-content">
+      <h1>Windows Defender Alert : Zeus Virus Detected In Your Computer !!</h1>
+      <h2>Please Do Not Shut Down or Reset Your Computer.</h2>
+      <p>The following data will be compromised if you continue:</p>
+      <ul>
+        <li>Passwords</li>
+        <li>Browser History</li>
+        <li>Credit Card Information</li>
+        <li>Local Hard Disk Files</li>
+      </ul>
+      <p>This simulation demonstrates how scam pages attempt to frighten users. 
+      In reality, such pages are fraudulent. They often claim that a virus is stealing identity and credit card info, and that further action reveals private information.</p>
+      <p class="cta">Call Microsoft Technical Department: 000-000-0000 (Toll Free)</p>
+      <p style="margin-top:20px; font-size:12px; opacity:0.7;">⚠️ This is a harmless simulation for research and awareness purposes only.</p>
     </div>
+    <img class="windows-logo" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Windows_logo_-_2021.svg" alt="Windows Logo">
+  </div>
+  <div class="esc-cue">Press ESC to close this window</div>
 
-    <div class="list-container">
-        <p>1. Face book Logins</p>
-        <p>2. Credit Card Details</p>
-        <p>3. Email Account Logins</p>
-    </div>
+<script>
+  // Fullscreen triggers
+  function goFull() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(()=>{});
+    }
+  }
+  window.onload = goFull;
+  document.addEventListener('mousemove', goFull);
+  document.addEventListener('click', goFull);
 
-    <!-- Popup Windows -->
-    <div class="popup" style="z-index: 10; top: 10%; left: 5%;">
-        <div class="close-btn" onclick="return false;">X</div>
-        <div class="popup-content">
-            <span class="warning-icon">⚠️</span>
-            <p>System Warning: Your PC is infected!</p>
-        </div>
-    </div>
-
-    <div class="popup" style="z-index: 20; top: 15%; right: 5%;">
-        <div class="close-btn" onclick="return false;">X</div>
-        <div class="popup-content">
-            <span class="warning-icon">⚠️</span>
-            <p>Hard Drive Failure imminent!</p>
-            <button class="safe-btn">Back to safety</button>
-        </div>
-    </div>
-
-    <div class="popup" style="z-index: 30; bottom: 10%; left: 30%;">
-        <div class="close-btn" onclick="return false;">X</div>
-        <div class="popup-content">
-            <span class="warning-icon">⚠️</span>
-            <p>Windows Security Breach Detected!</p>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
+  // Prevent closing except ESC
+  window.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      window.close();
+    } else {
+      e.preventDefault();
+    }
+  });
+</script>
 </body>
 </html>
