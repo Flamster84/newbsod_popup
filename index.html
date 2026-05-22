@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Windows Defender Alert Simulation</title>
+<title>Windows Support Alert Simulation</title>
 <style>
   body {
     margin: 0;
@@ -13,46 +13,83 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    text-align: center;
     flex-direction: column;
   }
-  h1 {
-    font-size: 28px;
-    margin-bottom: 20px;
+  .top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #005A9E;
+    padding: 10px;
+    font-weight: bold;
+    text-align: center;
   }
-  h2 {
-    font-size: 20px;
-    margin-bottom: 20px;
+  .popup {
+    background: #fff;
+    color: #000;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.9);
+    padding: 20px;
+    text-align: center;
+    max-width: 500px;
+    animation: glitch 3s infinite;
   }
-  ul {
-    list-style: none;
-    padding: 0;
+  .popup h1 {
+    color: red;
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .popup p {
     margin: 10px 0;
   }
-  ul li::before {
-    content: "• ";
+  .popup input {
+    width: 80%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
   }
-  p {
-    max-width: 600px;
-    margin: 10px auto;
+  .popup button {
+    padding: 8px 16px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background: #0078D7;
+    color: #fff;
+    cursor: pointer;
   }
-  .cta {
-    font-size: 22px;
+  .popup button:hover {
+    background: #005A9E;
+  }
+  @keyframes glitch {
+    0%, 90% { transform: translate(0,0); }
+    95% { transform: translate(-2px,2px); }
+    100% { transform: translate(2px,-2px); }
+  }
+  .bottom-section {
+    margin-top: 30px;
+    background: #005A9E;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+  }
+  .bottom-section h2 {
+    margin-bottom: 10px;
+  }
+  .bottom-section button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+    color: #0078D7;
+    cursor: pointer;
     font-weight: bold;
-    margin-top: 20px;
   }
-  .layout {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-  }
-  .text-content {
-    max-width: 500px;
-  }
-  .windows-logo {
-    width: 120px;
-    height: auto;
+  .bottom-section button:hover {
+    background: #ddd;
   }
   .esc-cue {
     position: fixed;
@@ -68,31 +105,32 @@
 </style>
 </head>
 <body>
-  <div class="layout">
-    <div class="text-content">
-      <h1>Windows Defender Alert : Zeus Virus Detected In Your Computer !!</h1>
-      <h2>Please Do Not Shut Down or Reset Your Computer.</h2>
-      <p>The following data will be compromised if you continue:</p>
-      <ul>
-        <li>Passwords</li>
-        <li>Browser History</li>
-        <li>Credit Card Information</li>
-        <li>Local Hard Disk Files</li>
-      </ul>
-      <p>This simulation demonstrates how scam pages attempt to frighten users. 
-      In reality, such pages are fraudulent. They often claim that a virus is stealing identity and credit card info, and that further action reveals private information.</p>
-      <p class="cta">Call Microsoft Technical Department: 917-814-6549 (Toll Free)</p>
-      <p style="margin-top:20px; font-size:12px; opacity:0.7;">.</p>
-    </div>
-    <!-- Modern Windows 11 style logo inline SVG -->
-    <svg class="windows-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-      <rect width="120" height="120" x="0" y="0" fill="#FFFFFF"/>
-      <rect width="120" height="120" x="136" y="0" fill="#FFFFFF"/>
-      <rect width="120" height="120" x="0" y="136" fill="#FFFFFF"/>
-      <rect width="120" height="120" x="136" y="136" fill="#FFFFFF"/>
-    </svg>
+  <div class="top-bar">Microsoft Support - Toll Free: +1 917-814-6549</div>
+
+  <div class="popup">
+    <h1>VIRUS ALERT FROM MICROSOFT</h1>
+    <p>This computer is BLOCKED</p>
+    <p>Enter Windows registration key:</p>
+    <input type="text" placeholder="Enter key here">
+    <button>Submit</button>
+    <p style="margin-top:20px; font-size:12px; opacity:0.7;">.</p>
   </div>
+
+  <div class="bottom-section">
+    <h2>Windows Support Alert</h2>
+    <p>Your system has detected suspicious activity. Please contact support immediately.</p>
+    <button>Ignore Alert</button>
+    <button>Chat Now</button>
+  </div>
+
   <div class="esc-cue">Press ESC to close this window</div>
+
+  <!-- Alarm sound -->
+  <audio id="alarm" autoplay loop>
+    <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" type="audio/ogg">
+    <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
 
 <script>
   // Fullscreen triggers
@@ -101,7 +139,11 @@
       document.documentElement.requestFullscreen().catch(()=>{});
     }
   }
-  window.onload = goFull;
+  window.onload = function() {
+    goFull();
+    // Play alarm
+    document.getElementById('alarm').play().catch(()=>{});
+  };
   document.addEventListener('mousemove', goFull);
   document.addEventListener('click', goFull);
 
