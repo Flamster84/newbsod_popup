@@ -1,178 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Windows Support Alert Simulation</title>
-<style>
-  body {
-    margin: 0;
-    background-color: #0078D7;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    color: #FFFFFF;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-  }
-  .top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #005A9E;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-  }
-  .logo {
-    width: 100px;
-    height: auto;
-  }
-  .popup {
-    margin-top: 80px;
-    background: #fff;
-    color: #000;
-    border: 4px solid red; /* red border */
-    border-radius: 8px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.9);
-    padding: 20px;
-    text-align: center;
-    max-width: 500px;
-  }
-  .popup h1 {
-    color: red;
-    font-size: 22px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-  .popup p {
-    margin: 10px 0;
-    font-weight: bold;
-  }
-  .popup input {
-    width: 80%;
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .popup button {
-    padding: 8px 16px;
-    margin: 10px;
-    border: none;
-    border-radius: 4px;
-    background: red;
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .popup button:hover {
-    background: darkred;
-  }
-  .bottom-section {
-    margin-top: 30px;
-    background: #005A9E;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    width: 80%;
-  }
-  .bottom-section h2 {
-    margin-bottom: 10px;
-    text-transform: uppercase;
-  }
-  .bottom-section p {
-    margin-bottom: 20px;
-  }
-  .bottom-section button {
-    padding: 10px 20px;
-    margin: 10px;
-    border: none;
-    border-radius: 4px;
-    background: red;
-    color: #fff;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  .bottom-section button:hover {
-    background: darkred;
-  }
-  .esc-cue {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    font-size: 12px;
-    opacity: 0.6;
-    animation: blink 1s infinite;
-  }
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
-</style>
-</head>
-<body>
-  <div class="top-bar">
-    <!-- Inline Microsoft logo -->
-    <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-      <rect width="120" height="120" x="0" y="0" fill="#FFFFFF"/>
-      <rect width="120" height="120" x="136" y="0" fill="#FFFFFF"/>
-      <rect width="120" height="120" x="0" y="136" fill="#FFFFFF"/>
-      <rect width="120" height="120" x="136" y="136" fill="#FFFFFF"/>
-    </svg>
-    <span>Toll Free: +1 917-814-6549</span>
-  </div>
+<!--[if lt IE 7]> <html lang="en-us" class="a-no-js a-lt-ie9 a-lt-ie8 a-lt-ie7"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-us" class="a-no-js a-lt-ie9 a-lt-ie8"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-us" class="a-no-js a-lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="a-no-js" lang="en-us"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title dir="ltr">Amazon.com</title>
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" href="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/AmazonUI-3c913031596ca78a3768f4e934b1cc02ce238101.secure.min._V1_.css">
+<script type="text/javascript">Object.defineProperty(document, "referrer", {get : function(){ return ""; }})</script><script>
 
-  <div class="popup">
-    <h1>VIRUS ALERT FROM MICROSOFT</h1>
-    <p>This computer is BLOCKED</p>
-    <p>Enter Windows registration key:</p>
-    <input type="text" placeholder="Enter key here">
-    <button>Submit</button>
-    <button>Cancel</button>
-    <p style="margin-top:20px; font-size:12px; opacity:0.7;">⚠️.</p>
-  </div>
-
-  <div class="bottom-section">
-    <h2>Windows Support Alert</h2>
-    <p>Your system has detected suspicious activity. Please contact support immediately.</p>
-    <button>Ignore Alert</button>
-    <button>Chat Now</button>
-  </div>
-
-  <div class="esc-cue">Press ESC to close this window</div>
-
-  <!-- Alarm sound -->
-  <audio id="alarm" autoplay loop>
-    <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg" type="audio/ogg">
-    <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-<script>
-  // Fullscreen triggers
-  function goFull() {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(()=>{});
-    }
-  }
-  window.onload = function() {
-    goFull();
-    // Play alarm
-    document.getElementById('alarm').play().catch(()=>{});
-  };
-  document.addEventListener('mousemove', goFull);
-  document.addEventListener('click', goFull);
-
-  // Prevent closing except ESC
-  window.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      window.close();
-    } else {
-      e.preventDefault();
-    }
-  });
+if (true === true) {
+    var ue_t0 = (+ new Date()),
+        ue_csm = window,
+        ue = { t0: ue_t0, d: function() { return (+new Date() - ue_t0); } },
+        ue_furl = "fls-na.amazon.com",
+        ue_mid = "ATVPDKIKX0DER",
+        ue_sid = (document.cookie.match(/session-id=([0-9-]+)/) || [])[1],
+        ue_sn = "opfcaptcha.amazon.com",
+        ue_id = 'VR9R26SYJ8BCHNDVKN15';
+}
 </script>
-</body>
-</html>
+<script src="https://images-na.ssl-images-amazon.com/images/G/01/csminstrumentation/csm-captcha-instrumentation.min.js"></script><script src="https://images-na.ssl-images-amazon.com/images/G/01/csminstrumentation/rd-script-6d68177fa6061598e9509dc4b5bdd08d.js"></script><script src="https://images-na.ssl-images-amazon.com/images/G/01/csminstrumentation/ue-base-1c399ad9886cab69575e1e5ee15c61a1._V313498596_.js"></script><script src="https://images-na.ssl-images-amazon.com/images/G/01/AUIClients/ClientSideMetricsAUIJavascript-51171fbdd28e1a7a61e922e8f0272af8bc74d37b.secure.variant-desktop-session-snapshot-keypress.min._V2_.js"></script></head>
+<body>
+
+<!--
+        To discuss automated access to Amazon data please contact api-services-support@amazon.com.
+        For information about migrating to our APIs refer to our Marketplace APIs at https://developer.amazonservices.com/ref=rm_c_sv, or our Product Advertising API at https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html/ref=rm_c_ac for advertising use cases.
+-->
+
+<!--
+Correios.DoNotSend
+-->
+
+<div class="a-container a-padding-double-large" style="min-width:350px;padding:44px 0 !important">
+
+    <div class="a-row a-spacing-double-large" style="width: 350px; margin: 0 auto">
+
+        <div class="a-row a-spacing-medium a-text-center"><i class="a-icon a-logo" alt="Amazon logo"></i></div>
+
+        <div class="a-box a-alert a-alert-info a-spacing-base">
+            <div class="a-box-inner">
+                <i class="a-icon a-icon-alert" alt="Alert icon"></i>
+                <h4>Click the button below to continue shopping</h4>
+                </div>
+            </div>
+
+            <div class="a-section">
+
+                <div class="a-box a-color-offset-background">
+                    <div class="a-box-inner a-padding-extra-large">
+
+                        <form method="get" action="/errors/validateCaptcha" name="">
+                            <input type="hidden" name="amzn" value="llyHAR/ZkWvDE5AcigqC+A=="><input type="hidden" name="amzn-r" value="/">
+                            <input type="hidden" name="field-keywords" value="HYJJHC">
+                            <div class="a-section a-spacing-extra-large">
+
+                                <div class="a-row">
+                                    <span class="a-button a-button-primary a-span12">
+                                        <span class="a-button-inner">
+                                            <button type="submit" class="a-button-text" alt="Continue shopping">Continue shopping</button>
+                                        </span>
+                                    </span>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="a-divider a-divider-section"><div class="a-divider-inner"></div></div>
+
+        <div class="a-text-center a-spacing-small a-size-mini">
+            <a href="https://www.amazon.com/gp/help/customer/display.html/ref=footer_cou?ie=UTF8&amp;nodeId=508088">Conditions of Use</a>
+            <span class="a-letter-space"></span>
+            <span class="a-letter-space"></span>
+            <span class="a-letter-space"></span>
+            <span class="a-letter-space"></span>
+            <a href="https://www.amazon.com/gp/help/customer/display.html/ref=footer_privacy?ie=UTF8&amp;nodeId=468496">Privacy Policy</a>
+        </div>
+        <div class="a-text-center a-size-mini a-color-base">
+          © 1996-2025, Amazon.com, Inc. or its affiliates
+          <script>
+           if (true === true) {
+             document.write('<img src="https://fls-na.amaz'+'on.com/'+'1/oc-csi/1/OP/requestId=VR9R26SYJ8BCHNDVKN15&js=1" alt=""/>');
+           };
+          </script><img src="https://fls-na.amazon.com/1/oc-csi/1/OP/requestId=VR9R26SYJ8BCHNDVKN15&amp;js=1" alt="" tjeexb19n="">
+          <noscript>
+            <img src="https://fls-na.amazon.com/1/oc-csi/1/OP/requestId=VR9R26SYJ8BCHNDVKN15&js=0" alt=""/>
+          </noscript>
+        </div>
+    </div>
+    <script>
+    if (true === true) {
+        var head = document.getElementsByTagName('head')[0],
+            prefix = "https://images-na.ssl-images-amazon.com/images/G/01/csminstrumentation/",
+            elem = document.createElement("script");
+        elem.src = prefix + "csm-captcha-instrumentation.min.js";
+        head.appendChild(elem);
+
+        elem = document.createElement("script");
+        elem.src = prefix + "rd-script-6d68177fa6061598e9509dc4b5bdd08d.js";
+        head.appendChild(elem);
+    }
+    </script>
+
+</body></html>
